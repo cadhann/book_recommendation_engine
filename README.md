@@ -8,12 +8,12 @@ The engine is trained on the [Book-Crossings dataset](https://cdn.freecodecamp.o
 
 # Description
 
-The project uses a collaborative filtering recommender build from scratch using Python.
+The project uses a collaborative filtering recommender built from scratch using Python.
 It:
 - Processes and filters the **Book-Crossings dataset** to keep active users and popular books.
 - Builds a **book-user matrix** where each row is a book, and each column is a user.
 - Calculates the **cosine similarity** between books to find those with similar preferences.
-- Uses **k-NN** to recommend books similar to any given title.
+- Uses **k-NN** to recommend books similar to a given title.
 - Includes evaluation using **Recall@K** to measure how often the model correctly recommends books a user may like.
 
 ---
@@ -21,7 +21,7 @@ It:
 # How it Works
 1. **Loading the Data**: The Book-Crossings dataset is downloaded and loaded.
 2. **Filtering:** Removes all users with less than `min_user_ratings` ratings, and all books with less than `min_book_ratings` ratings.
-3. **Building the Matrix**: Creates a binary book x user matrix, where 1 represents a user rating a book positively, and 0 representing otherwise. It may also apply TF-IDF like weighting to try reduce popularity bias.
+3. **Building the Matrix**: Creates a binary book x user matrix, where 1 represents a user rating a book positively, and 0 represents otherwise. It may also apply TF-IDF like weighting to try to reduce popularity bias.
 4. **Training:** Fits a k-NN model using cosine similarity on the matrix.
 5. **Evaluation:** Splits data by holding out 1 positive rating per user, and measuring how often the held out book appears in the top K neighbours (Recall@K).
 6. **Recommendation**: Given a title, finds the most similar books based on the patterns of the other readers.
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 ```bash
 python -m scripts.train --min-user-ratings 200 --min-book-ratings 100 --k 5
 ```
-This willL
+This will:
 - Download & preprocess the data.
 - Build the item x user matrix.
 - Train the k-NN model.
@@ -87,7 +87,7 @@ Done.
 ```
 
 ### 4. Generate recommendations.
-When trained, similar books can be queryed.
+When trained, similar books can be queried.
 ```bash
 python -m scripts.recommend --title "Animal Farm" --top-k 5
 ```
